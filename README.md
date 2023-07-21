@@ -1,5 +1,9 @@
 # Deep-Learning-In-Computer-Vision
- 1. Vision Transformer in detailed
- 2. VAE
- 3. Diffusion Model
- 4. 
+ * Vision Transformer in detailed
+ * VAE
+ * Diffusion Model
+
+# Resources 
+## Papers
+### CNN 
+* [A guide to convolution arithmetic for deep learning](https://arxiv.org/pdf/1603.07285.pdf)
