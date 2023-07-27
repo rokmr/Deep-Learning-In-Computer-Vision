@@ -78,7 +78,7 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 
   which results in next equation
   
-- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α}_{t}} \cdot  x_{0}, \bar{α}_{t}I)$
+- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α_{t}}} \cdot  x_{0}, \bar{α_{t}}I)$
 - $p(x_{t-1}| x_{t}) =  \mathcal{N}(x_{t}; \mu_{Θ}(x_{t}, t),\Sigma_{Θ}(x_{t}, t) )$ 
 
   In tis case we have two parameters which characterize the normal distribution.
