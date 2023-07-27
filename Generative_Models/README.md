@@ -74,7 +74,7 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 
   $= \cdot \cdot \cdot$
 
-  $= \sqrt{ \bar{α}_{t} } \cdot  x_{0}+ \sqrt{1-\bar{α}_{t}} \cdot ϵ$
+  $= \sqrt{ \bar{α_{t}} } \cdot  x_{0}+ \sqrt{1-\bar{α_{t}}} \cdot ϵ$
 
   which results in next equation
   
