@@ -63,21 +63,21 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 
 ## Equations : 
 
-- $q(x_{t}| x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-β_{t}} \cdot  x_{t-1}, β_{t}I) $
+- $q(x_{t}| x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-β_{t}} \cdot  x_{t-1}, β_{t}I)$
 
   Above equation adds noise step by step. There is a better way of doing it. 
-  $q(x_{t}| x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-β_{t}} \cdot  x_{t-1}, β_{t}I) $
+  $q(x_{t}| x_{t-1}) = \mathcal{N}(x_{t}; \sqrt{1-β_{t}} \cdot  x_{t-1}, β_{t}I)$
 
-  $ = \sqrt{1-β_{t}} \cdot  x_{t-1}+ \sqrt{β_{t}} \cdot ϵ_{t-1}$  
-  $ = \sqrt{α_{t}} \cdot  x_{t-1}+ \sqrt{1-α_{t}} \cdot ϵ_{t-1}$
-  $ = \sqrt{ α_{t} \cdot α_{t-1}} \cdot  x_{t-2}+ \sqrt{1-α_{t} \cdot α_{t-1}} \cdot \bar{ϵ}_{t-2}$
+  $= \sqrt{1-β_{t}} \cdot  x_{t-1}+ \sqrt{β_{t}} \cdot ϵ_{t-1}$  
+  $= \sqrt{α_{t}} \cdot  x_{t-1}+ \sqrt{1-α_{t}} \cdot ϵ_{t-1}$
+  $= \sqrt{ α_{t} \cdot α_{t-1}} \cdot  x_{t-2}+ \sqrt{1-α_{t} \cdot α_{t-1}} \cdot \bar{ϵ}_{t-2}$
 
-  $ = \cdot \cdot \cdot$
+  $= \cdot \cdot \cdot$
 
-  $ = \sqrt{ \bar{α}_{t} } \cdot  x_{0}+ \sqrt{1-\bar{α}_{t}} \cdot   ϵ$
+  $= \sqrt{ \bar{α}_{t} } \cdot  x_{0}+ \sqrt{1-\bar{α}_{t}} \cdot   ϵ$
 
   which results in next equation
-- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}, \sqrt{\bar{α}_{t}} \cdot  x_{0}, \bar{α}_{t}I) $
+- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}, \sqrt{\bar{α}_{t}} \cdot  x_{0}, \bar{α}_{t}I)$
 - $p(x_{t-1}| x_{t}) =  \mathcal{N}(x_{t}; \mu_{Θ}(x_{t}, t),\Sigma_{Θ}(x_{t}, t) )$ 
 
   In tis case we have two parameters which characterize the normal distribution.
