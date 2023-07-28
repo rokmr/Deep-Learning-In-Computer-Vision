@@ -3,13 +3,21 @@ It consist of two process:
 1. Forward Process
 2. Reverse Process
 
-**Forward Process** - In the forward process we add noise to the input image. We don't add same amount of noise each time, 
+**Forward Process:** 
+
+![fwd_viz](./colabImages/fwd_viz.png)
+
+In the forward process we add noise to the input image. We don't add same amount of noise each time, 
 this regulated by the scheduler which scales mean and var of noise. This ensures variance does not explode as we add more and more noise.
 Different Scheduler:
 1. Linear Scheduler
 2. Cosine Scheduler
 
-**Reverse Process** - The reverse process of diffusion models is the process of generating new data by starting from a noisy image and gradually removing the noise. This is done by iteratively applying a neural network to the image, which learns to reverse the diffusion process that was used to create the noisy image in the first place.
+**Reverse Process:** 
+
+![fwd_viz](./colabImages/_viz.png)
+
+ The reverse process of diffusion models is the process of generating new data by starting from a noisy image and gradually removing the noise. This is done by iteratively applying a neural network to the image, which learns to reverse the diffusion process that was used to create the noisy image in the first place.
 
 **Model:**
 
@@ -171,6 +179,7 @@ input to the model, we may choose the parameterization
 ![eq_11](./colabImages/eq_11.png)
 
 where $ϵ_{\theta}$ is a function approximator intended to predict ϵ from $x_{t}$. Which results in following equation:
+
 ![eq_12](./colabImages/eq_12.png)
 
 which resembles denoising score matching over multiple noise scales indexed by t.
@@ -179,12 +188,18 @@ which resembles denoising score matching over multiple noise scales indexed by t
 To summarize, we can train the reverse process mean function approximator $\mu_{\theta}$ to predict $\tilde{\mu_{t}}$, or by
 modifying its parameterization, we can train it to predict ϵ.
 
-# Algorithm
+## Algorithm
 ![algorithm](./colabImages/algorithm.png)
+
+During Sampling at t=1 there is no point ofa adding noise as we are already at the end of the diffusion process i.e., $x_{0}$. Adding noise to it will make it more noisy.
+
+## Objective Function
+![eq_14](./colabImages/eq_14.png)
 
 # Resources
 - [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
 - [DDPM](https://arxiv.org/pdf/2006.11239.pdf)
 - [Blog Post](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 - [minDiffusion github](https://github.com/cloneofsimo/minDiffusion)
-- [Outlier YouTube](https://www.youtube.com/watch?v=HoKDTa5jHvg&t=1453s&ab_channel=Outlier)
+- [Arash YT  DDPM ](https://www.youtube.com/watch?v=cS6JQpEY9cs&t=1216s&ab_channel=ArashVahdat)
+- [Outlier YT DDPM](https://www.youtube.com/watch?v=HoKDTa5jHvg&t=1453s&ab_channel=Outlier)
