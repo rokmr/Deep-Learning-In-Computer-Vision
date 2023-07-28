@@ -74,7 +74,7 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
   $= \cdot \cdot \cdot$
 
   $= \sqrt{ \bar{α_{t}} } \cdot  x_{0}+ \sqrt{1-\bar{α_{t}}} \cdot ϵ$
-![merge_2_gauss](./colabimages/merge_2_gauss.png)
+![merge_2_gauss](./colabImages/merge_2_gauss.png)
   which results in next equation
   
 - $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α_{t}}} \cdot  x_{0}, \bar{α_{t}}I)$
@@ -87,10 +87,10 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 # Loss
 $Loss = -log(p_{\theta}(x_{0}))$ can't be used as it is intractable. Since $x-{0}$ is dependent on $x_{1}, x_{2},...x_{T}$.
 So , we use the following loss function.
-![VLB](./colabimages/VLB.png)
+![VLB](./colabImages/VLB.png)
 from first term to second term can be arrived by using Bayes Rule $P(A|B) = \frac{P(AB)}{P(B)}$. we know,
-![forward_process](./colabimages/forward_process.png)
-![reverse_process](./colabimages/reverse_process.png)
+![forward_process](./colabImages/forward_process.png)
+![reverse_process](./colabImages/reverse_process.png)
 
 Proceeding for further simplification:
 ![VLB2](./colabImages/VLB2.png).
@@ -123,20 +123,20 @@ This can be easily computed
 Uses KL divergence to directly compare $p_{θ}(x_{t−1}|x_{t})$ against forward process posteriors, which are tractable
 when conditioned on $x_{0}$.
 In turn this results in following form for $q$
-![eq_6_and_7](./colabimages/eq_6_and_7.png)
+![eq_6_and_7](./colabImages/eq_6_and_7.png)
 
 Since, var: $\bar{\beta_{t}}$ is fixed. Focus on $\bar{\mu_{t}}$ wich is something like weighted average.
 Here, $x_{0}$ can rewritten as: $x_{0} = \frac{1} {\sqrt{\bar{\alpha_{t}}}}\cdot (  x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t})$ , substituting value of $x_{0}$ in $\bar{\mu_{t}}$ we get:
 
-![meuT2](./colabimages/meuT2.png)
+![meuT2](./colabImages/meuT2.png)
 
 we care just subtracting random scaled noise from $x_{t}$ and scaling it by $\frac{1}{\sqrt{\bar{\alpha_{t}}}}$.
 
 we need to learn a neural network to approximate the conditioned probability distributions in the reverse diffusion process, $p(x_{t-1}| x_{t}) =  \mathcal{N}(x_{t}; \mu_{Θ}(x_{t}, t),\Sigma_{Θ}(x_{t}, t) )$. We would like to train to $\mu_{\theta}$ to predict  $\bar{\mu_{t}}$. Because $x_{t}$ is available as input at training time, we can reparameterize the Gaussian noise term instead to make it predict $ϵ_{t}$ from the input $x_{t}$ at time step $t$. 
-![xt_1](./colabimages/xt_1.png)
+![xt_1](./colabImages/xt_1.png)
 
 To represent $\mu_{\theta}, $ author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
-![eq8](./colabimages/eq8.png)
+![eq8](./colabImages/eq8.png)
 
 where $f_{\theta}$ is a neural network that takes $x_{t}$ as input and outputs a vector of size $d$.
 
