@@ -147,7 +147,7 @@ Here, $x_{0}$ can rewritten as:
 
 $x_{0} = \frac{1}{\sqrt{\bar{\alpha_{t}}}} \cdot (x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t})$, 
 
-substituting value of $x_{0}$ in $\bar{\mu_{t}} $ we get:
+substituting value of $x_{0}$ in $\bar{\mu_{t}}$ we get:
 
 ![meuT2](./colabImages/meuT2.png)
 
