@@ -9,21 +9,21 @@ Different Scheduler:
 1. Linear Scheduler
 2. Cosine Scheduler
 
-**Reverse Process** - 
+**Reverse Process** - The reverse process of diffusion models is the process of generating new data by starting from a noisy image and gradually removing the noise. This is done by iteratively applying a neural network to the image, which learns to reverse the diffusion process that was used to create the noisy image in the first place.
 
 **Model:**
-```
-DDPM
-```
+
+## DDPM
+`
 
 - [U-Net](https://arxiv.org/pdf/1505.04597.pdf) like architecture, it takes image ans input and using ResNet block and down-sample block project image to small resolution.
 - After bottleneck it uses up-sample project back to original image size.
 - Author puts attention block at bottlenek and also included skip connection between layers of same resolution.
 - Sinusoidal time embedding is projected into each residual block for forward and reverse diffusion process for making at different time steps.
 
-```
-Diffusion Models Beat GANs on Image Synthesis
-```
+
+## Diffusion Models Beat GANs on Image Synthesis
+
 *Updates*
 - Increasing depth versus width, holding model size relatively constant.
 - Increasing the number of attention heads.
@@ -33,7 +33,7 @@ Diffusion Models Beat GANs on Image Synthesis
 - Classifier Guidance
 - Adaptive Group Normalization
 
-  ![Adaptive Group Normalization](./colabImages/Adaptive%20Group%20Normalization.jpeg)
+   ![Adaptive Group Normalization](./colabImages/Adaptive%20Group%20Normalization.jpeg)
 
   $y_{s}$ : linear projection of time step; 
   $y_{b}$ : linear projection of class label
@@ -137,8 +137,10 @@ we care just subtracting random scaled noise from $x_{t}$ and scaling it by $\fr
 we need to learn a neural network to approximate the conditioned probability distributions in the reverse diffusion process, $p(x_{t-1}| x_{t}) =  \mathcal{N}(x_{t}; \mu_{Θ}(x_{t}, t),\Sigma_{Θ}(x_{t}, t) )$. We would like to train to $\mu_{\theta}$ to predict  $\bar{\mu_{t}}$. Because $x_{t}$ is available as input at training time, we can reparameterize the Gaussian noise term instead to make it predict $ϵ_{t}$ from the input $x_{t}$ at time step $t$. 
 ![xt_1](.\colabimages\xt_1.jpeg)
 
-So, author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$.
-![]
+To represent $\mu_{\theta}, $ author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
+![eq8](.\colabimages\eq8.jpeg)
+
+where $f_{\theta}$ is a neural network that takes $x_{t}$ as input and outputs a vector of size $d$.
 
 
 # Resources
