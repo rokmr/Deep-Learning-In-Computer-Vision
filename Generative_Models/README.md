@@ -138,8 +138,6 @@ we need to learn a neural network to approximate the conditioned probability dis
 To represent $\mu_{\theta}, $ author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
 ![eq8](./colabImages/eq8.png)
 
-where $f_{\theta}$ is a neural network that takes $x_{t}$ as input and outputs a vector of size $d$.
-
 
 # Resources
 - [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
