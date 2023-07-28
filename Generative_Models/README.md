@@ -79,7 +79,7 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 
   which results in next equation
   
-- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α_{t}}} \cdot  x_{0}, \bar{α_{t}}I)$
+- $q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α_{t}}} \cdot  x_{0}, (1 - \bar{α_{t}})I)$
 - $p(x_{t-1}| x_{t}) =  \mathcal{N}(x_{t}; \mu_{Θ}(x_{t}, t),\Sigma_{Θ}(x_{t}, t) )$ 
 
   In tis case we have two parameters which characterize the normal distribution.
@@ -117,7 +117,7 @@ Every KL term in final eq. is between two Gaussian distributions and therefore t
 1. **$1^{st}$ term is the prior matching term.**
 
 We ignore the fact that the forward process variances βt are learnable by reparameterization and
-instead fix them to constants (see Section 4 for details). Thus, in our implementation, the approximate
+instead fix them to constants. Thus, in our implementation, the approximate
 posterior q has no learnable parameters, so **$L_{T}$ is a constant during training and can be ignored.**
 
 
@@ -134,7 +134,7 @@ In turn this results in following form for $q$
 ![eq_6_and_7](./colabImages/eq_6_and_7.png)
 
 Since, var: $\bar{\beta_{t}}$ is fixed. Focus on $\bar{\mu_{t}}$ wich is something like weighted average.
-Here, $x_{0}$ can rewritten as: $x_{0} = \frac{1} {\sqrt{\bar{\alpha_{t}}}}\cdot (  x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t})$ , substituting value of $x_{0}$ in $\bar{\mu_{t}}$ we get:
+Here, $x_{0}$ can rewritten as: $x_{0} = \frac{1} {\sqrt{\bar{\alpha_{t}}}}\cdot (  x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t}) $ , substituting value of $x_{0}$ in $\bar{\mu_{t}} $ we get:
 
 ![meuT2](./colabImages/meuT2.png)
 
@@ -144,10 +144,43 @@ we need to learn a neural network to approximate the conditioned probability dis
 
 ![xt_1](./colabImages/xt_1.png)
 
-To represent $\mu_{\theta}, $ author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
+To represent $\mu_{\theta}$, author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
 
 ![eq8](./colabImages/eq8.png)
+where C is a constant that does not depend on θ. The most straightforward parameterization of $\mu_{\theta}$
+is a model that predicts $\tilde{\mu_{\theta}}$ , the forward process posterior mean.
 
+Using reparameterization :
+ 
+
+$q(x_{t}| x_{0}) = \mathcal{N}(x_{t}; \sqrt{\bar{α_{t}}} \cdot  x_{0}, (1 - \bar{α_{t}})I)$  to
+
+$x_{0}(x_{t}, ϵ) = \sqrt{\bar{\alpha_{t}}} \cdot x_{0} + \sqrt{1-\bar{\alpha_{t}}} \cdot ϵ $
+
+Now on substituting the value of  $\tilde{\mu_{t}} = \frac{1}{\sqrt{\alpha_{t}}} \cdot (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha_{t}}}} \cdot ϵ)$ from one of the blue colored equation.
+We get following form on substituting:
+
+$L_{t-1} - C =$
+
+![eq_10](./colabImages/eq_10.png)
+
+$\mu_{\theta}$ must predict $\frac{1}{\sqrt{\alpha_{t}}} \cdot (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha_{t}}}} \cdot ϵ)$
+given $x_{t}$. Since $x_{t}$ is available as
+input to the model, we may choose the parameterization
+
+![eq_11](./colabImages/eq_11.png)
+
+where $ϵ_{\theta}$ is a function approximator intended to predict ϵ from $x_{t}$. Which results in following equation:
+![eq_12](./colabImages/eq_12.png)
+
+which resembles denoising score matching over multiple noise scales indexed by t.
+
+## SUMMARY
+To summarize, we can train the reverse process mean function approximator $\mu_{\theta}$ to predict $\tilde{\mu_{t}}$, or by
+modifying its parameterization, we can train it to predict ϵ.
+
+# Algorithm
+![algorithm](./colabImages/algorithm.png)
 
 # Resources
 - [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
