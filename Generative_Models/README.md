@@ -15,7 +15,7 @@ Different Scheduler:
 
 **Reverse Process:** 
 
-![fwd_viz](./colabImages/_viz.png)
+![rev_viz](./colabImages/rev_viz.png)
 
  The reverse process of diffusion models is the process of generating new data by starting from a noisy image and gradually removing the noise. This is done by iteratively applying a neural network to the image, which learns to reverse the diffusion process that was used to create the noisy image in the first place.
 
@@ -34,7 +34,7 @@ Different Scheduler:
 - Increasing depth versus width, holding model size relatively constant.
 - Increasing the number of attention heads.
 - Using attention at 32×32, 16×16, and 8×8 resolutions rather than only at 16×16.
-- Using the BigGAN [5] residual block for upsampling and downsampling the activations.
+- Using the BigGAN residual block for upsampling and downsampling the activations.
 - Rescaling residual connections with $1/\sqrt{2}$.
 - Classifier Guidance
 - Adaptive Group Normalization
@@ -53,7 +53,7 @@ Estimating small perturbations is more tractable than explicitly describing the 
 distribution with a single, non-analytically-normalizable,
 potential function. Furthermore, since a diffusion process
 exists for any smooth target distribution, this method can
-capture data distributions of arbitrary form. [Deep Unsupervised Learning]
+capture data distributions of arbitrary form. [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
 
 # Math behind Diffusion Models
 ## Notation :
@@ -66,6 +66,7 @@ capture data distributions of arbitrary form. [Deep Unsupervised Learning]
 - $\bar{α_{t}}$ = $\prod_{s=1}^{t} α_{s}$ 
 - $ϵ_{t} \sim N(0, I)$
 - $\bar{ϵ}_{t-2}$ : merage of two gaussian 
+
 
 ## Equations : 
 
@@ -142,7 +143,7 @@ In turn this results in following form for $q$
 ![eq_6_and_7](./colabImages/eq_6_and_7.png)
 
 Since, var: $\bar{\beta_{t}}$ is fixed. Focus on $\bar{\mu_{t}}$ wich is something like weighted average.
-Here, $x_{0}$ can rewritten as: $x_{0} = \frac{1} {\sqrt{\bar{\alpha_{t}}}}\cdot (  x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t}) $ , substituting value of $x_{0}$ in $\bar{\mu_{t}} $ we get:
+Here, $x_{0}$ can rewritten as: $x_{0} = \frac{1}{\sqrt{\bar{\alpha_{t}}}} \cdot (x_{t} - \sqrt{1-\bar{\alpha_{t}}} \cdot \bar{ϵ}_{t})$ , substituting value of $x_{0}$ in $\bar{\mu_{t}} $ we get:
 
 ![meuT2](./colabImages/meuT2.png)
 
@@ -155,6 +156,7 @@ we need to learn a neural network to approximate the conditioned probability dis
 To represent $\mu_{\theta}$, author proposed a specific parameterization between actual $\tilde{\mu_{t}}$ and predicted $\mu_{\theta}$. **Loss**
 
 ![eq8](./colabImages/eq8.png)
+
 where C is a constant that does not depend on θ. The most straightforward parameterization of $\mu_{\theta}$
 is a model that predicts $\tilde{\mu_{\theta}}$ , the forward process posterior mean.
 
@@ -195,6 +197,9 @@ During Sampling at t=1 there is no point ofa adding noise as we are already at t
 
 ## Objective Function
 ![eq_14](./colabImages/eq_14.png)
+
+Inner term, can be written as: 
+$|| ϵ - ϵ_{\theta}(x_{t}, t) ||^2$
 
 # Resources
 - [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
