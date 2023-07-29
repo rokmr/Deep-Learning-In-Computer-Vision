@@ -1,5 +1,6 @@
 # Diffusion Model
 It consist of two process:
+
 1. Forward Process
 2. Reverse Process
 
@@ -177,7 +178,7 @@ We get following form on substituting:
 $L_{t-1} - C =$
 
 ![eq_10](./colabImages/eq_10.png)
-
+ 
 $\mu_{\theta}$ must predict $\frac{1}{\sqrt{\alpha_{t}}} \cdot (x_{t} - \frac{\beta_{t}}{\sqrt{1-\bar{\alpha_{t}}}} \cdot ϵ)$
 given $x_{t}$. Since $x_{t}$ is available as
 input to the model, we may choose the parameterization
