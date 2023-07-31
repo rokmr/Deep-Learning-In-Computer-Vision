@@ -239,3 +239,6 @@ $|| ϵ - ϵ_{\theta}(x_{t}, t) ||^2$
 - [minDiffusion github](https://github.com/cloneofsimo/minDiffusion)
 - [Arash YT  DDPM ](https://www.youtube.com/watch?v=cS6JQpEY9cs&t=1216s&ab_channel=ArashVahdat)
 - [Outlier YT DDPM](https://www.youtube.com/watch?v=HoKDTa5jHvg&t=1453s&ab_channel=Outlier)
+- [Diffusers hf](https://github.com/huggingface/diffusers/tree/main#new--stable-diffusion-is-now-fully-compatible-with-diffusers)
+- [Stable Diffusion Paper](https://arxiv.org/pdf/2112.10752.pdf)
+- Jay Alammar Stable Diffusion [Blog](https://jalammar.github.io/illustrated-stable-diffusion/?ref=dailydevbytes.com) || [YT Video](https://www.youtube.com/watch?v=MXmacOUJUaw&ab_channel=JayAlammar)
