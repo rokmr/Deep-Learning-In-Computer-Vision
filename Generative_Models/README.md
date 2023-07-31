@@ -1,4 +1,27 @@
 # Diffusion Model
+## Difuusion Model Outputs:
+Trained on MNIST Datasets for 50 epochs:
+
+![mnist_ddpm_sample_50](./colabImages/mnist_ddpm_sample_50.png)
+
+Trained on MNIST Datasets for 50 epochs:
+
+![cifar10_ddpm_sample_50](./colabImages/cifar10_ddpm_sample_50.png)
+
+Using pretrained diffusion model by google/ddpm-ema-church-256 which is trained on church dataset :
+
+![diff_op](./colabImages/diff_op.png)
+
+Using Pretraiend-Stable Diffusion Model **runwayml/stable-diffusion-v1-5** and others:
+**Prompt** - A cute cat in anime style
+
+![stable_op_1](./colabImages/stable_op_1.png)
+
+**Prompt** - Cat celebrating birthday
+
+![stable_op_2](./colabImages/stable_op_2.png)
+
+# Diffusion Model Explained;
 It consist of two process:
 
 1. Forward Process
@@ -205,6 +228,9 @@ During Sampling at t=1 there is no point ofa adding noise as we are already at t
 
 Inner term, can be written as: 
 $|| ϵ - ϵ_{\theta}(x_{t}, t) ||^2$
+
+# Stable Diffusion:
+- Visit Jay Alammar stable diffusion blog post. 
 
 # Resources
 - [Deep Unsupervised Learning](https://arxiv.org/pdf/1503.03585.pdf)
