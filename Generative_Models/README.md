@@ -46,9 +46,9 @@ Different Scheduler:
 **Model:**
 
 ## DDPM
-- [U-Net](https://arxiv.org/pdf/1505.04597.pdf) like architecture, it takes image ans input and using ResNet block and down-sample block project image to small resolution.
+- [U-Net](https://arxiv.org/pdf/1505.04597.pdf) like architecture, it takes image as an input and using ResNet block and down-sample block project image to small resolution.
 - After bottleneck it uses up-sample project back to original image size.
-- Author puts attention block at bottlenek and also included skip connection between layers of same resolution.
+- Author puts attention block at bottleneck and also included skip connection between layers of same resolution.
 - Sinusoidal time embedding is projected into each residual block for forward and reverse diffusion process for making at different time steps.
 
 
